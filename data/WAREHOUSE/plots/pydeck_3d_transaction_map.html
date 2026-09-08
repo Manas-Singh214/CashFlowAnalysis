@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.14.0/dist/maplibre-gl.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.3.*/dist/index.js'></script>
+    <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/@deck.gl/widgets@~9.3.*/dist/stylesheet.css />
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+
+#deck-container .error_text {
+  color: red;
+  background: none;
+  position: absolute;
+  z-index: 100;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "bearing": 0,
+    "latitude": 22.5,
+    "longitude": 78.9,
+    "pitch": 45,
+    "zoom": 4
+  },
+  "layers": [
+    {
+      "@@type": "ColumnLayer",
+      "autoHighlight": true,
+      "data": [
+        {
+          "City": "MUMBAI",
+          "Count": 103512,
+          "elevation": 20702.4,
+          "lat": 19.076,
+          "lon": 72.8777
+        },
+        {
+          "City": "NEW DELHI",
+          "Count": 84834,
+          "elevation": 16966.8,
+          "lat": 28.6139,
+          "lon": 77.209
+        },
+        {
+          "City": "BANGALORE",
+          "Count": 81479,
+          "elevation": 16295.8,
+          "lat": 12.9716,
+          "lon": 77.5946
+        },
+        {
+          "City": "GURGAON",
+          "Count": 73745,
+          "elevation": 14749.0,
+          "lat": 28.4595,
+          "lon": 77.0266
+        },
+        {
+          "City": "DELHI",
+          "Count": 70940,
+          "elevation": 14188.0,
+          "lat": 28.7041,
+          "lon": 77.1025
+        },
+        {
+          "City": "NOIDA",
+          "Count": 32753,
+          "elevation": 6550.6,
+          "lat": 28.5355,
+          "lon": 77.391
+        },
+        {
+          "City": "CHENNAI",
+          "Count": 29996,
+          "elevation": 5999.2,
+          "lat": 13.0827,
+          "lon": 80.2707
+        },
+        {
+          "City": "PUNE",
+          "Count": 25837,
+          "elevation": 5167.4,
+          "lat": 18.5204,
+          "lon": 73.8567
+        },
+        {
+          "City": "HYDERABAD",
+          "Count": 23017,
+          "elevation": 4603.4,
+          "lat": 17.385,
+          "lon": 78.4867
+        },
+        {
+          "City": "THANE",
+          "Count": 21496,
+          "elevation": 4299.2,
+          "lat": 19.2183,
+          "lon": 72.9781
+        },
+        {
+          "City": "KOLKATA",
+          "Count": 19963,
+          "elevation": 3992.6,
+          "lat": 22.5726,
+          "lon": 88.3639
+        },
+        {
+          "City": "GHAZIABAD",
+          "Count": 15828,
+          "elevation": 3165.6,
+          "lat": 28.6692,
+          "lon": 77.4538
+        },
+        {
+          "City": "NAVI MUMBAI",
+          "Count": 13067,
+          "elevation": 2613.4,
+          "lat": 19.033,
+          "lon": 73.0297
+        },
+        {
+          "City": "AHMEDABAD",
+          "Count": 12259,
+          "elevation": 2451.8,
+          "lat": 23.0225,
+          "lon": 72.5714
+        },
+        {
+          "City": "FARIDABAD",
+          "Count": 11317,
+          "elevation": 2263.4,
+          "lat": 28.4089,
+          "lon": 77.3178
+        },
+        {
+          "City": "JAIPUR",
+          "Count": 9915,
+          "elevation": 1983.0,
+          "lat": 26.9124,
+          "lon": 75.7873
+        },
+        {
+          "City": "CHANDIGARH",
+          "Count": 9522,
+          "elevation": 1904.4,
+          "lat": 30.7333,
+          "lon": 76.7794
+        },
+        {
+          "City": "LUCKNOW",
+          "Count": 7758,
+          "elevation": 1551.6,
+          "lat": 26.8467,
+          "lon": 80.9462
+        },
+        {
+          "City": "MOHALI",
+          "Count": 6736,
+          "elevation": 1347.2,
+          "lat": 30.7046,
+          "lon": 76.7179
+        },
+        {
+          "City": "SURAT",
+          "Count": 5762,
+          "elevation": 1152.4,
+          "lat": 21.1702,
+          "lon": 72.8311
+        },
+        {
+          "City": "VISAKHAPATNAM",
+          "Count": 4452,
+          "elevation": 890.4,
+          "lat": 17.6868,
+          "lon": 83.2185
+        },
+        {
+          "City": "INDORE",
+          "Count": 3889,
+          "elevation": 777.8,
+          "lat": 22.7196,
+          "lon": 75.8577
+        },
+        {
+          "City": "VADODARA",
+          "Count": 3887,
+          "elevation": 777.4,
+          "lat": 22.3072,
+          "lon": 73.1812
+        },
+        {
+          "City": "NAGPUR",
+          "Count": 3584,
+          "elevation": 716.8,
+          "lat": 21.1458,
+          "lon": 79.0882
+        },
+        {
+          "City": "COIMBATORE",
+          "Count": 3559,
+          "elevation": 711.8,
+          "lat": 11.0168,
+          "lon": 76.9558
+        }
+      ],
+      "elevationScale": 50,
+      "getElevation": "@@=elevation",
+      "getFillColor": "@@=[0, 212, 255, 200]",
+      "getPosition": "@@=[lon, lat]",
+      "id": "9430aea7-18f8-4177-b14c-05c81c9b569f",
+      "pickable": true,
+      "radius": 30000
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "mapbox://styles/mapbox/dark-v10",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = {'text': '{City}\nTransactions: {Count}'};
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration,
+          });
+
+  </script>
+</html>
