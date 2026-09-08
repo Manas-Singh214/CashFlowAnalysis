@@ -1,134 +1,123 @@
-﻿# 🛡️ Predictive Cash-Withdrawal & Cybercrime Analytics Pipeline
+# Cashflow Intelligence
 
-## 📌 Project Overview
-This project ingests, cleans, merges, and models multi-source banking, socio-economic, and cybercrime datasets across India. The objective is to build an analytical foundation to analyze relationships between banking infrastructure (ATMs, PoS, Cards), socio-economic indicators (GDP, literacy, unemployment), and cyber/financial fraud incidents — paving the way for proactive geospatial hotspot forecasting.
+Cashflow Intelligence is an India-focused banking and cybercrime analytics project. It combines bank financials, ATM and card infrastructure, individual transactions, socioeconomic indicators, and cybercrime records into analysis-ready datasets.
 
----
+The project has three main entry points:
 
-## ⚙️ Virtual Environment Setup & Installation
+- `data_merge.py` cleans the raw files and creates the merged CSV outputs.
+- `main.ipynb` contains the full exploratory analysis and visualizations, organized into notebook cells.
+- `app.py` provides a Streamlit dashboard for exploring the merged data through a browser.
 
-1. **Create the virtual environment**:
-   ```bash
-   python -m venv .venv
-   ```
+## Project Structure
 
-2. **Activate the virtual environment**:
-   - **Windows (PowerShell)**:
-     ```powershell
-     .\.venv\Scripts\Activate.ps1
-     ```
-   - **Windows (Command Prompt / CMD)**:
-     ```cmd
-     .venv\Scripts\activate.bat
-     ```
-   - **macOS / Linux**:
-     ```bash
-     source .venv/bin/activate
-     ```
+```text
+.
+├── app.py
+├── data_merge.py
+├── main.ipynb
+├── requirements.txt
+├── README.md
+├── data/
+│   └── geo/india_states.geojson
+├── DATASETS/
+│   ├── Bank Records/
+│   └── Crime Records/
+└── MERGED DATASETS/
+```
 
-3. **Install all dependencies**:
-   ```bash
-   pip install --upgrade pip
-   pip install -r requirements.txt
-   ```
+`DATASETS/` contains source files. `MERGED DATASETS/` contains generated outputs and is not a replacement for the raw sources.
 
-4. **Configure environment variables (optional)**:
-   ```bash
-   cp .env.example .env
-   ```
-   Every setting has a sensible default relative to the project root, so this step is optional — `.env` exists purely so paths (`DATASETS/`, `MERGED DATASETS/`, the India GeoJSON) can be overridden without touching code. `.env` is git-ignored; only `.env.example` is committed.
+## Setup
 
-5. **Regenerate the merged datasets** (source CSVs in `DATASETS/` are git-ignored and must be supplied locally):
-   ```bash
-   python data_merge.py
-   ```
+From the project root, create and activate a virtual environment.
 
-6. **Run the EDA notebook**:
-   ```bash
-   jupyter lab main.ipynb
-   # or, headlessly:
-   jupyter nbconvert --to notebook --execute --inplace main.ipynb
-   ```
+### Windows PowerShell
 
-### 🗂️ Portability & Git Hygiene Notes
-- `data_merge.py` and `main.ipynb` resolve all data paths **relative to the project root** (or via `.env` overrides) — no hardcoded Windows drive letters, so the pipeline runs unmodified on Windows, macOS, and Linux.
-- The Plotly/Folium India state-boundary map used by the choropleth cells is a small, version-controlled GeoJSON at `data/geo/india_states.geojson` — the notebook renders fully **offline** (the original master notebook depended on an external gist URL that has since gone dead — a 404).
-- `DATASETS/` and `MERGED DATASETS/` (raw sources + pipeline outputs, some 60–75 MB) are **git-ignored** to keep the repository lightweight; they were also removed from git's tracked history (`git rm --cached`) without touching the files on disk. Re-run `python data_merge.py` after cloning to regenerate the merged CSVs locally.
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
 
----
+### macOS or Linux
 
-## 📚 Tech Stack & Library Ecosystem
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
 
-The project dependencies in `requirements.txt` are organized into specialized layers:
+## Regenerate the Data
 
-### 1. Data Ingestion & Extraction
-- **`pdfplumber`**: High-precision tabular data parsing from threat advisories and PDF reports.
-- **`requests`** & **`beautifulsoup4`**: Automated API fetching and HTML scraping for public banking locator portals.
+Run the merge pipeline whenever the raw source files change:
 
-### 2. Core Processing & OLAP Engines
-- **`polars`**: High-throughput, multi-threaded columnar processing for large complaint logs.
-- **`duckdb`**: In-process SQL OLAP engine for zero-overhead joins and windowed aggregations.
-- **`pandas`** & **`numpy`**: Standard DataFrame manipulation, schema enforcement, and numerical ops.
-- **`pyarrow`**: Fast Apache Parquet read/write backend for partitioned storage.
-- **`openpyxl`** / **`xlrd`**: Modern and legacy Excel file parsing.
+```bash
+python data_merge.py
+```
 
-### 3. Geospatial & Spatial Indexing
-- **`geopandas`** & **`shapely`**: Vector spatial data manipulation, geometry creation, and bounding calculations.
-- **`osmnx`**: Road network routing and drive-time isochrones around high-risk ATMs.
-- **`h3`**: Uber's discrete global hierarchical hexagonal spatial indexing system.
-- **`pydeck`** & **`folium`**: High-performance 3D spatial Deck.gl maps and interactive Leaflet visualizations.
+The script reads from `DATASETS/` and writes these four files to `MERGED DATASETS/`:
 
-### 4. NLP, Visualization & Data Integrity
-- **`spacy`**: Named Entity Recognition (NER) for parsing unstructured incident reports.
-- **`matplotlib`**, **`seaborn`**, **`plotly`**, **`hvplot`**: Multi-dimensional static and interactive charts.
-- **`pygwalker`**: Embedded Tableau-like interactive data explorer directly inside Jupyter Notebooks.
-- **`great-expectations`**: Automated data validation and schema integrity checks.
+| File | Purpose |
+| --- | --- |
+| `merged_bank_financials.csv` | Bank balance-sheet measures joined with ATM, PoS, QR, and card statistics. |
+| `bank_transactions_clean.csv` | Deduplicated transactions with parsed dates and positive amounts. |
+| `merged_crime_data.csv` | State and district socioeconomic data joined with crime and cyber-fraud measures. |
+| `cyber_national_trends.csv` | Year-wise national cyber and financial-fraud measures. |
 
----
+The crime pipeline expects `DATASETS/Crime Records/datafile.xls`, which is included with the local source files.
 
-## 🧩 Data Cleaning & Merging Pipeline (Non-Technical Gist)
+## Run the Dashboard
 
-Raw data comes from multiple distinct sources (RBI statistics, state crime bureaus, and parliament records). Because these systems use differing conventions, the pipeline performs three key functions:
+```bash
+python -m streamlit run app.py
+```
 
-### 1. Name Standardization
-- Harmonizes bank names (e.g., `"State Bank of India LTD."`, `"STATE BANK OF INDIA"`, `"SBI"`) into matching canonical keys.
-- Normalizes state and union territory naming differences (e.g., `"J&K"` vs. `"JAMMU & KASHMIR"`).
+Open the local URL shown by Streamlit. The dashboard includes:
 
-### 2. Filtering & Type Validation
-- Removes duplicate rows, missing identifiers, zero/negative transaction values, and summary rows (such as `"ALL INDIA"` or `"TOTAL"`).
-- Converts raw strings into typed timestamps, dates, and float values.
+- An overview of data coverage and headline indicators.
+- National cybercrime trends.
+- Bank assets, deposits, returns, NPAs, and ATM infrastructure.
+- Transaction date, value, and location analysis.
+- State-level crime and cyber-fraud comparisons.
 
-### 3. Aggregation & Relational Merging
-- Computes bank-wide monthly averages for ATM/card infrastructure and joins them to yearly balance sheets.
-- Joins district/state socio-economic variables with cybercrime incident figures.
+The dashboard loads generated CSVs from a path relative to `app.py`, so it does not depend on the terminal’s current directory.
 
----
+## Open the Notebook
 
-## 🗂️ Processed Datasets (Pipeline Outputs)
+Run the notebook in JupyterLab:
 
-The pipeline produces **4 clean datasets** in `MERGED DATASETS/`:
+```bash
+jupyter lab main.ipynb
+```
 
-| Output File | Key Sources | Contents |
-| :--- | :--- | :--- |
-| **`merged_bank_financials.csv`** | *Indian Banks Data v2.0* + *RBI ATM/Card Stats* | Bank financials (Deposits, Advances, NPAs, ROA) combined with ATM counts, PoS terminals, QR codes, and card stats. |
-| **`bank_transactions_clean.csv`** | *Bank Transactions Dataset* | 1M+ cleaned individual transactions with validated DOBs, locations, balances, and positive amounts. |
-| **`merged_crime_data.csv`** | *India Crime & Socioeconomic Data* + *NCRB Data* + *Parliament Session Reports* | State-level socioeconomic metrics (GDP, literacy, poverty, unemployment) merged with violent, property, and cybercrime incident metrics. |
-| **`cyber_national_trends.csv`** | *Parliament Questions (RS Session 267)* | National macro trends of cyber incidents, defrauded amounts, and reported fraud volumes. |
+Run the cells from top to bottom after generating the merged datasets. The notebook contains the detailed charts, interactive maps, and exploratory analysis behind the dashboard’s summary views.
 
----
+## Data Notes
 
-## 📈 Project Progress & Roadmap
+- The project uses public banking, transaction, socioeconomic, and cybercrime records collected from multiple sources.
+- Field names and units are preserved in the generated CSV headers where practical.
+- Financial amounts are generally reported in Indian rupees, lakh, or crore according to the source field name.
+- The outputs are analytical datasets, not live banking or crime feeds.
+- Treat relationships in the exploratory charts as associations, not proof of causation.
 
-- [x] **Phase 1: Ingestion & Pipeline Setup**
-  - Downloaded and organized raw datasets into `DATASETS/Bank Records` and `DATASETS/Crime Records`.
-  - Built and formatted `data_merge.py` for automated normalization, cleaning, and merging.
-  - Generated the 4 baseline master datasets in `MERGED DATASETS/`.
-  - Established project environment and dependency specifications in `requirements.txt`.
-- [ ] **Phase 2: Exploratory Data Analysis (EDA) & Feature Engineering**
-  - Analyze correlations between ATM density, digital transactions, and cyber fraud incidents.
-  - Calculate state-level financial recovery ratios and vulnerability indices.
-- [ ] **Phase 3: Geospatial Analytics & Dashboards**
-  - Map regional risk densities with H3 hex-binning and Pydeck / Folium.
-  - Construct an interactive BI dashboard (Power BI / Tableau / PyGWalker).
-- [ ] **Phase 4: Predictive Modeling & Hotspot Forecasting**
-  - Train spatial-temporal models to forecast high-risk cash-withdrawal locations.
+## Troubleshooting
+
+If the app says that merged datasets are missing, run:
+
+```bash
+python data_merge.py
+```
+
+If an import is missing, activate the virtual environment and reinstall:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+If PowerShell blocks environment activation, run this once in the current terminal or use the environment’s Python directly:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
