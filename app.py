@@ -13,6 +13,7 @@ import pygwalker as pyg
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 NOTEBOOK_PATH = PROJECT_ROOT / "main.ipynb"
+GITHUB_URL = "https://github.com/Manas-Singh214/CashFlowAnalysis"
 
 st.set_page_config(
     page_title="PLOTTED GRAPHS",
@@ -35,6 +36,12 @@ st.markdown(
     .hero h1 { font-size: clamp(2rem, 4vw, 3.4rem); margin: .2rem 0 .35rem; }
     .hero p, .muted, .cell-meta, [data-testid="stCaptionContainer"] { color: #aeb9ca; }
     .cell-meta { font-size: .9rem; margin-bottom: 1rem; }
+    .landing { padding: 2rem 0 1rem; }
+    .landing h1 { font-size: clamp(2.8rem, 7vw, 6rem); line-height: .98; margin: .4rem 0 1rem; }
+    .landing-copy { max-width: 720px; color: #aeb9ca; font-size: 1.08rem; line-height: 1.7; }
+    .part-card { background: #182236; border: 1px solid #2b3a53; border-radius: 8px; padding: 1.1rem; min-height: 128px; }
+    .part-card h3 { margin: 0 0 .45rem; font-size: 1.02rem; }
+    .part-card p { color: #aeb9ca; font-size: .86rem; margin: 0; line-height: 1.45; }
     div.stButton > button { text-align: left; background: #182236; color: #e8edf5; border: 1px solid #2b3a53; border-radius: 6px; margin-bottom: .25rem; }
     div.stButton > button:hover { background: #24324a; border-color: #f26b38; color: #ffffff; }
     [data-testid="stDivider"] { border-color: #2b3548; }
@@ -202,32 +209,87 @@ if not cells:
 groups = notebook_groups(cells)
 cell_lookup = {index: cell for index, cell in enumerate(cells)}
 
+part_descriptions = [
+    ("Project Overview", "Datasets, methods, libraries, and the complete analysis map."),
+    ("Part 1 - National Cyber-Crime Trends", "National incidents, fraud amounts, and time-series trends."),
+    ("Part 2 - Banking Financial Health", "Bank assets, deposits, NPAs, returns, and infrastructure."),
+    ("Part 3 - Bank Transaction Analysis", "Transaction amounts, balances, cities, time, and gender."),
+    ("Part 4 - Crime and Socio-Economic Analysis", "State crime, poverty, GDP, literacy, and cyber fraud."),
+    ("Part 5 - Geospatial Maps", "Transaction density, hotspots, and state-level crime maps."),
+    ("Part 6 - Interactive Exploration", "PyGWalker data exploration for the three major datasets."),
+    ("Part 7 - Advanced Visuals", "Cross-dataset, animated, flow, composition, and distribution views."),
+]
+
 if "selected_cell" not in st.session_state:
     st.session_state.selected_cell = next(
         (index for index, cell in enumerate(cells) if cell.get("cell_type") == "code"),
         0,
     )
+if "show_home" not in st.session_state:
+    st.session_state.show_home = True
 
 
 def notebook_cell_number(cell, fallback_index):
     match = re.match(r"\s*#\s*(\d+)\.", source_text(cell))
     return match.group(1) if match else str(fallback_index + 1)
 
-st.sidebar.markdown("## PLOTTED GRAPHS")
-st.sidebar.caption(f"Visualization cells 3–51 · {len(groups)} groups")
+st.sidebar.markdown("## CASHFLOW ANALYSIS PROJECT")
+if st.sidebar.button("Home", use_container_width=True):
+    st.session_state.show_home = True
+if st.sidebar.button("Access graphs", use_container_width=True):
+    st.session_state.show_home = False
 st.sidebar.divider()
 
-for group_index, group in enumerate(groups):
-    st.sidebar.markdown(f"**{group_index + 1}. {group['name']}**")
-    for index, cell in group["cells"]:
-        label = cell_title(cell, index)
-        if st.sidebar.button(label, key=f"cell_{index}", use_container_width=True):
-            st.session_state.selected_cell = index
+if not st.session_state.show_home:
+    st.sidebar.caption(f"Visualization cells 3–51 · {len(groups)} groups")
+    for group_index, group in enumerate(groups):
+        st.sidebar.markdown(f"**{group_index + 1}. {group['name']}**")
+        for index, cell in group["cells"]:
+            label = cell_title(cell, index)
+            if st.sidebar.button(label, key=f"cell_{index}", use_container_width=True):
+                st.session_state.selected_cell = index
 
-explorer_choice = st.sidebar.selectbox(
-    "Interactive explorer",
-    ["None", "Bank financials", "Crime and socio-economic data", "Transactions (50K sample)"],
-)
+explorer_choice = "None"
+if not st.session_state.show_home:
+    explorer_choice = st.sidebar.selectbox(
+        "Interactive explorer",
+        ["None", "Bank financials", "Crime and socio-economic data", "Transactions (50K sample)"],
+    )
+
+if st.session_state.show_home:
+    st.markdown(
+        '<div class="landing">'
+        '<div class="eyebrow">India-focused banking and cybercrime analytics</div>'
+        '<h1>Cashflow<br>Intelligence</h1>'
+        '<p class="landing-copy">A visual analysis of bank financial health, transaction behavior, cybercrime trends, socioeconomic conditions, and geospatial risk across India.</p>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
+    repo_col, graph_col, _ = st.columns([1, 1, 2])
+    with repo_col:
+        st.link_button("View GitHub repo", GITHUB_URL, use_container_width=True)
+    with graph_col:
+        if st.button("Access graphs", type="primary", use_container_width=True):
+            st.session_state.show_home = False
+            st.rerun()
+    st.divider()
+    st.markdown("### Explore the project")
+    card_cols = st.columns(2)
+    for part_index, (part_name, description) in enumerate(part_descriptions):
+        with card_cols[part_index % 2]:
+            st.markdown(
+                f'<div class="part-card"><h3>{part_name}</h3><p>{description}</p></div>',
+                unsafe_allow_html=True,
+            )
+            if st.button(f"Open {part_name}", key=f"part_{part_index}", use_container_width=True):
+                st.session_state.show_home = False
+                if part_index > 0 and part_index - 1 < len(groups):
+                    group = groups[part_index - 1]
+                    code_cells = [item for item in group["cells"] if item[1].get("cell_type") == "code"]
+                    if code_cells:
+                        st.session_state.selected_cell = code_cells[0][0]
+                st.rerun()
+    st.stop()
 
 selected_index = st.session_state.selected_cell
 selected_cell = cell_lookup[selected_index]
