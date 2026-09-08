@@ -1,3 +1,4 @@
+#python -m streamlit run app.py
 from pathlib import Path
 import base64
 import json
@@ -6,13 +7,15 @@ import re
 import streamlit as st
 import streamlit.components.v1 as components
 import plotly.io as pio
+import pandas as pd
+import pygwalker as pyg
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 NOTEBOOK_PATH = PROJECT_ROOT / "main.ipynb"
 
 st.set_page_config(
-    page_title="This vs That",
+    page_title="PLOTTED GRAPHS",
     page_icon="T",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -48,6 +51,34 @@ def load_notebook():
         return []
     with NOTEBOOK_PATH.open("r", encoding="utf-8") as notebook_file:
         return json.load(notebook_file).get("cells", [])
+
+
+def visualization_cells(cells):
+    visible = []
+    for cell in cells:
+        if cell.get("cell_type") == "code":
+            match = re.match(r"\s*#\s*(\d+)\.", source_text(cell))
+            if match and 3 <= int(match.group(1)) <= 51:
+                visible.append(cell)
+        elif cell.get("cell_type") == "markdown" and re.search(
+            r"(^|\n)\s*##\s+", source_text(cell)
+        ):
+            visible.append(cell)
+    return visible
+
+
+@st.cache_data(show_spinner=False)
+def load_explorer_data(explorer_name):
+    paths = {
+        "Bank financials": PROJECT_ROOT / "MERGED DATASETS" / "merged_bank_financials.csv",
+        "Crime and socio-economic data": PROJECT_ROOT / "MERGED DATASETS" / "merged_crime_data.csv",
+        "Transactions (50K sample)": PROJECT_ROOT / "MERGED DATASETS" / "bank_transactions_clean.csv",
+    }
+    path = paths[explorer_name]
+    frame = pd.read_csv(path)
+    if explorer_name == "Transactions (50K sample)" and len(frame) > 50000:
+        frame = frame.sample(n=50000, random_state=42)
+    return frame
 
 
 def source_text(cell):
@@ -128,6 +159,25 @@ def render_output(output):
     return False
 
 
+def render_saved_map(cell):
+    title = cell_title(cell, 0).lower()
+    map_files = {
+        "34.": "folium_transaction_heatmap.html",
+        "35.": "folium_transaction_columns.html",
+        "36.": "folium_state_crime_choropleth.html",
+        "37.": "folium_transaction_hotspots.html",
+    }
+    filename = next((name for marker, name in map_files.items() if title.startswith(marker)), None)
+    if filename is None:
+        return False
+    map_path = PROJECT_ROOT / "data" / "WAREHOUSE" / "plots" / filename
+    if not map_path.exists():
+        st.info("Run this map cell in main.ipynb first to create its interactive HTML map.")
+        return True
+    components.html(map_path.read_text(encoding="utf-8"), height=760, scrolling=True)
+    return True
+
+
 def notebook_groups(cells):
     groups = []
     current = {"name": "Notebook setup", "cells": []}
@@ -144,7 +194,7 @@ def notebook_groups(cells):
     return groups
 
 
-cells = load_notebook()
+cells = visualization_cells(load_notebook())
 if not cells:
     st.error(f"Notebook not found: {NOTEBOOK_PATH}")
     st.stop()
@@ -158,8 +208,13 @@ if "selected_cell" not in st.session_state:
         0,
     )
 
-st.sidebar.markdown("## This vs That")
-st.sidebar.caption(f"{len(cells)} cells · {len(groups)} groups")
+
+def notebook_cell_number(cell, fallback_index):
+    match = re.match(r"\s*#\s*(\d+)\.", source_text(cell))
+    return match.group(1) if match else str(fallback_index + 1)
+
+st.sidebar.markdown("## PLOTTED GRAPHS")
+st.sidebar.caption(f"Visualization cells 3–51 · {len(groups)} groups")
 st.sidebar.divider()
 
 for group_index, group in enumerate(groups):
@@ -169,24 +224,46 @@ for group_index, group in enumerate(groups):
         if st.sidebar.button(label, key=f"cell_{index}", use_container_width=True):
             st.session_state.selected_cell = index
 
+explorer_choice = st.sidebar.selectbox(
+    "Interactive explorer",
+    ["None", "Bank financials", "Crime and socio-economic data", "Transactions (50K sample)"],
+)
+
 selected_index = st.session_state.selected_cell
 selected_cell = cell_lookup[selected_index]
 
 st.markdown(
     '<div class="hero"><div class="eyebrow">Local notebook platform</div>'
-    '<h1>This vs That</h1>'
+    '<h1>PLOTTED GRAPHS</h1>'
     '<p>Compare each analysis graph from the notebook through grouped, named buttons.</p></div>',
     unsafe_allow_html=True,
 )
 
+if explorer_choice != "None":
+    st.markdown(f"## {explorer_choice}")
+    try:
+        explorer_html = pyg.to_html(
+            load_explorer_data(explorer_choice),
+            theme_key="streamlit",
+            appearance="dark",
+            default_tab="vis",
+        )
+        components.html(explorer_html, height=820, scrolling=True)
+    except Exception as error:
+        st.error(f"Interactive explorer could not be loaded: {error}")
+    st.divider()
+
 st.markdown(f"## {cell_title(selected_cell, selected_index)}")
 st.markdown(
-    f'<div class="cell-meta">Cell {selected_index + 1} of {len(cells)}</div>',
+    f'<div class="cell-meta">Notebook cell {notebook_cell_number(selected_cell, selected_index)}</div>',
     unsafe_allow_html=True,
 )
 
 outputs = selected_cell.get("outputs", [])
-if outputs:
+saved_map_rendered = render_saved_map(selected_cell)
+if saved_map_rendered:
+    pass
+elif outputs:
     rendered = False
     for output in outputs:
         rendered = render_output(output) or rendered
@@ -196,4 +273,4 @@ else:
     st.caption("No saved graph output for this cell. Run it in main.ipynb first.")
 
 st.divider()
-st.caption("This vs That · Notebook graph browser · Run with: python -m streamlit run app.py")
+st.caption("PLOTTED GRAPHS · Notebook graph browser · Run with: python -m streamlit run app.py")

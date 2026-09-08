@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_62ffef8c50be4c199c7d6762cddf18af {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_62ffef8c50be4c199c7d6762cddf18af" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_62ffef8c50be4c199c7d6762cddf18af = L.map(
+                "map_62ffef8c50be4c199c7d6762cddf18af",
+                {
+                    center: [22.5, 78.9],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ea8a4e93d5966bbde23f0c7ec0fa3bad = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ea8a4e93d5966bbde23f0c7ec0fa3bad.addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+            var circle_marker_63d9f6e204a023fe2c53f90b95d19211 = L.circleMarker(
+                [19.076, 72.8777],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.3512, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_db8139f1535b8583f9553ddd16245037 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cec2b421207c3a25f35462161f34d705 = $(`<div id="html_cec2b421207c3a25f35462161f34d705" style="width: 100.0%; height: 100.0%;"><b>MUMBAI</b><br>Hotspot transactions: 103,512</div>`)[0];
+                popup_db8139f1535b8583f9553ddd16245037.setContent(html_cec2b421207c3a25f35462161f34d705);
+            
+        
+
+        circle_marker_63d9f6e204a023fe2c53f90b95d19211.bindPopup(popup_db8139f1535b8583f9553ddd16245037)
+        ;
+
+        
+    
+    
+            circle_marker_63d9f6e204a023fe2c53f90b95d19211.bindTooltip(
+                `<div>
+                     MUMBAI: 103,512
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_22ab88b3c4f4723ac829bb67f13e07c7 = L.circleMarker(
+                [28.6139, 77.209],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.4834, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_d477790c235380fe3aafacd7d2ca9444 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_769bea20125f5800c0c01f3915a98b4a = $(`<div id="html_769bea20125f5800c0c01f3915a98b4a" style="width: 100.0%; height: 100.0%;"><b>NEW DELHI</b><br>Hotspot transactions: 84,834</div>`)[0];
+                popup_d477790c235380fe3aafacd7d2ca9444.setContent(html_769bea20125f5800c0c01f3915a98b4a);
+            
+        
+
+        circle_marker_22ab88b3c4f4723ac829bb67f13e07c7.bindPopup(popup_d477790c235380fe3aafacd7d2ca9444)
+        ;
+
+        
+    
+    
+            circle_marker_22ab88b3c4f4723ac829bb67f13e07c7.bindTooltip(
+                `<div>
+                     NEW DELHI: 84,834
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3ce3b49f702d54130ba0c1140f808293 = L.circleMarker(
+                [12.9716, 77.5946],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.1479, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_7a77ccc1a3f0cf8215066dd87d5c64a0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d245d16274026569120aee7192e1a58a = $(`<div id="html_d245d16274026569120aee7192e1a58a" style="width: 100.0%; height: 100.0%;"><b>BANGALORE</b><br>Hotspot transactions: 81,479</div>`)[0];
+                popup_7a77ccc1a3f0cf8215066dd87d5c64a0.setContent(html_d245d16274026569120aee7192e1a58a);
+            
+        
+
+        circle_marker_3ce3b49f702d54130ba0c1140f808293.bindPopup(popup_7a77ccc1a3f0cf8215066dd87d5c64a0)
+        ;
+
+        
+    
+    
+            circle_marker_3ce3b49f702d54130ba0c1140f808293.bindTooltip(
+                `<div>
+                     BANGALORE: 81,479
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6c16e4f5636d34d682f0141ce21a2666 = L.circleMarker(
+                [28.4595, 77.0266],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.3745, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_8317b35d27bbb62e3b59c1abf7987903 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_edf28d3417f95eb3571f5d1fb9719c8d = $(`<div id="html_edf28d3417f95eb3571f5d1fb9719c8d" style="width: 100.0%; height: 100.0%;"><b>GURGAON</b><br>Hotspot transactions: 73,745</div>`)[0];
+                popup_8317b35d27bbb62e3b59c1abf7987903.setContent(html_edf28d3417f95eb3571f5d1fb9719c8d);
+            
+        
+
+        circle_marker_6c16e4f5636d34d682f0141ce21a2666.bindPopup(popup_8317b35d27bbb62e3b59c1abf7987903)
+        ;
+
+        
+    
+    
+            circle_marker_6c16e4f5636d34d682f0141ce21a2666.bindTooltip(
+                `<div>
+                     GURGAON: 73,745
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1990d944f72a07d197306f0181858957 = L.circleMarker(
+                [28.7041, 77.1025],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.094, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_2b2e6721bebc7b9954ca66504959c463 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_205ee78380758934e48949ec3ac3ae43 = $(`<div id="html_205ee78380758934e48949ec3ac3ae43" style="width: 100.0%; height: 100.0%;"><b>DELHI</b><br>Hotspot transactions: 70,940</div>`)[0];
+                popup_2b2e6721bebc7b9954ca66504959c463.setContent(html_205ee78380758934e48949ec3ac3ae43);
+            
+        
+
+        circle_marker_1990d944f72a07d197306f0181858957.bindPopup(popup_2b2e6721bebc7b9954ca66504959c463)
+        ;
+
+        
+    
+    
+            circle_marker_1990d944f72a07d197306f0181858957.bindTooltip(
+                `<div>
+                     DELHI: 70,940
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6427d0087a0df19b7b13f58433cb46db = L.circleMarker(
+                [28.5355, 77.391],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_a916f8b0baaee0514955a95f60ec3693 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_47110ce710494535d5f03266f7f9607c = $(`<div id="html_47110ce710494535d5f03266f7f9607c" style="width: 100.0%; height: 100.0%;"><b>NOIDA</b><br>Hotspot transactions: 32,753</div>`)[0];
+                popup_a916f8b0baaee0514955a95f60ec3693.setContent(html_47110ce710494535d5f03266f7f9607c);
+            
+        
+
+        circle_marker_6427d0087a0df19b7b13f58433cb46db.bindPopup(popup_a916f8b0baaee0514955a95f60ec3693)
+        ;
+
+        
+    
+    
+            circle_marker_6427d0087a0df19b7b13f58433cb46db.bindTooltip(
+                `<div>
+                     NOIDA: 32,753
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_53ab37729dc96f3bb39a74f101ae841f = L.circleMarker(
+                [13.0827, 80.2707],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_c65cdf6de5e7c0410de7eecc70fd46f3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5556b7354c1e5ee8cec67de2e8a7cfbd = $(`<div id="html_5556b7354c1e5ee8cec67de2e8a7cfbd" style="width: 100.0%; height: 100.0%;"><b>CHENNAI</b><br>Hotspot transactions: 29,996</div>`)[0];
+                popup_c65cdf6de5e7c0410de7eecc70fd46f3.setContent(html_5556b7354c1e5ee8cec67de2e8a7cfbd);
+            
+        
+
+        circle_marker_53ab37729dc96f3bb39a74f101ae841f.bindPopup(popup_c65cdf6de5e7c0410de7eecc70fd46f3)
+        ;
+
+        
+    
+    
+            circle_marker_53ab37729dc96f3bb39a74f101ae841f.bindTooltip(
+                `<div>
+                     CHENNAI: 29,996
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c4f1aa0bd7e857ff2aeef9b814688bb2 = L.circleMarker(
+                [18.5204, 73.8567],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_7321f4dcee20297e27dbf5074dad42ee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bd83ad60cbbe443d68a204a948761344 = $(`<div id="html_bd83ad60cbbe443d68a204a948761344" style="width: 100.0%; height: 100.0%;"><b>PUNE</b><br>Hotspot transactions: 25,837</div>`)[0];
+                popup_7321f4dcee20297e27dbf5074dad42ee.setContent(html_bd83ad60cbbe443d68a204a948761344);
+            
+        
+
+        circle_marker_c4f1aa0bd7e857ff2aeef9b814688bb2.bindPopup(popup_7321f4dcee20297e27dbf5074dad42ee)
+        ;
+
+        
+    
+    
+            circle_marker_c4f1aa0bd7e857ff2aeef9b814688bb2.bindTooltip(
+                `<div>
+                     PUNE: 25,837
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b9b38d2639dae7eb63e6e3cd3bf5e78d = L.circleMarker(
+                [17.385, 78.4867],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_f2c8f80ab9d028849effe724453ed360 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b5c65cad6709c951c27e2ccdbba4054e = $(`<div id="html_b5c65cad6709c951c27e2ccdbba4054e" style="width: 100.0%; height: 100.0%;"><b>HYDERABAD</b><br>Hotspot transactions: 23,017</div>`)[0];
+                popup_f2c8f80ab9d028849effe724453ed360.setContent(html_b5c65cad6709c951c27e2ccdbba4054e);
+            
+        
+
+        circle_marker_b9b38d2639dae7eb63e6e3cd3bf5e78d.bindPopup(popup_f2c8f80ab9d028849effe724453ed360)
+        ;
+
+        
+    
+    
+            circle_marker_b9b38d2639dae7eb63e6e3cd3bf5e78d.bindTooltip(
+                `<div>
+                     HYDERABAD: 23,017
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bd56d88f04f36bdeddc8d9ffc0d2d13a = L.circleMarker(
+                [19.2183, 72.9781],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_a8618f869c0fe32da9c1d5b457e76570 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f1f736261df5ff9d69175e7ad6cbc929 = $(`<div id="html_f1f736261df5ff9d69175e7ad6cbc929" style="width: 100.0%; height: 100.0%;"><b>THANE</b><br>Hotspot transactions: 21,496</div>`)[0];
+                popup_a8618f869c0fe32da9c1d5b457e76570.setContent(html_f1f736261df5ff9d69175e7ad6cbc929);
+            
+        
+
+        circle_marker_bd56d88f04f36bdeddc8d9ffc0d2d13a.bindPopup(popup_a8618f869c0fe32da9c1d5b457e76570)
+        ;
+
+        
+    
+    
+            circle_marker_bd56d88f04f36bdeddc8d9ffc0d2d13a.bindTooltip(
+                `<div>
+                     THANE: 21,496
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_62cc06de6f5b081407661d69e7b1720e = L.circleMarker(
+                [22.5726, 88.3639],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_a07de6a50df2e55164562980c544bfbf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f69f2a3e35fef5e39a1277a57d76a462 = $(`<div id="html_f69f2a3e35fef5e39a1277a57d76a462" style="width: 100.0%; height: 100.0%;"><b>KOLKATA</b><br>Hotspot transactions: 19,963</div>`)[0];
+                popup_a07de6a50df2e55164562980c544bfbf.setContent(html_f69f2a3e35fef5e39a1277a57d76a462);
+            
+        
+
+        circle_marker_62cc06de6f5b081407661d69e7b1720e.bindPopup(popup_a07de6a50df2e55164562980c544bfbf)
+        ;
+
+        
+    
+    
+            circle_marker_62cc06de6f5b081407661d69e7b1720e.bindTooltip(
+                `<div>
+                     KOLKATA: 19,963
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b6441f362972cc296bdcdca142d22b38 = L.circleMarker(
+                [28.6692, 77.4538],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_a50cea0061282a37e3adf02bc6533627 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3f4141f25058d920ba7fa0da74ca2afa = $(`<div id="html_3f4141f25058d920ba7fa0da74ca2afa" style="width: 100.0%; height: 100.0%;"><b>GHAZIABAD</b><br>Hotspot transactions: 15,828</div>`)[0];
+                popup_a50cea0061282a37e3adf02bc6533627.setContent(html_3f4141f25058d920ba7fa0da74ca2afa);
+            
+        
+
+        circle_marker_b6441f362972cc296bdcdca142d22b38.bindPopup(popup_a50cea0061282a37e3adf02bc6533627)
+        ;
+
+        
+    
+    
+            circle_marker_b6441f362972cc296bdcdca142d22b38.bindTooltip(
+                `<div>
+                     GHAZIABAD: 15,828
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_663db1c9163c895746f28b3300745a43 = L.circleMarker(
+                [19.033, 73.0297],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_04c2b6ba27d2e70bc7c6afcc1f091342 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6663016e9c26e793092ef683a903daf2 = $(`<div id="html_6663016e9c26e793092ef683a903daf2" style="width: 100.0%; height: 100.0%;"><b>NAVI MUMBAI</b><br>Hotspot transactions: 13,067</div>`)[0];
+                popup_04c2b6ba27d2e70bc7c6afcc1f091342.setContent(html_6663016e9c26e793092ef683a903daf2);
+            
+        
+
+        circle_marker_663db1c9163c895746f28b3300745a43.bindPopup(popup_04c2b6ba27d2e70bc7c6afcc1f091342)
+        ;
+
+        
+    
+    
+            circle_marker_663db1c9163c895746f28b3300745a43.bindTooltip(
+                `<div>
+                     NAVI MUMBAI: 13,067
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bf9989264b405e5ecc8a2b928e0af72c = L.circleMarker(
+                [23.0225, 72.5714],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_2dbb0070ef5e5d4c21a85e31874165a2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b58253ec94f867d97e79ca3f7ec5c2ec = $(`<div id="html_b58253ec94f867d97e79ca3f7ec5c2ec" style="width: 100.0%; height: 100.0%;"><b>AHMEDABAD</b><br>Hotspot transactions: 12,259</div>`)[0];
+                popup_2dbb0070ef5e5d4c21a85e31874165a2.setContent(html_b58253ec94f867d97e79ca3f7ec5c2ec);
+            
+        
+
+        circle_marker_bf9989264b405e5ecc8a2b928e0af72c.bindPopup(popup_2dbb0070ef5e5d4c21a85e31874165a2)
+        ;
+
+        
+    
+    
+            circle_marker_bf9989264b405e5ecc8a2b928e0af72c.bindTooltip(
+                `<div>
+                     AHMEDABAD: 12,259
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a2b84a93d3407b26368f4f9ea9a4ee71 = L.circleMarker(
+                [28.4089, 77.3178],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_db084916e69807eb45c3775b0254da71 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e13539f380a1351d095844294b13b4fd = $(`<div id="html_e13539f380a1351d095844294b13b4fd" style="width: 100.0%; height: 100.0%;"><b>FARIDABAD</b><br>Hotspot transactions: 11,317</div>`)[0];
+                popup_db084916e69807eb45c3775b0254da71.setContent(html_e13539f380a1351d095844294b13b4fd);
+            
+        
+
+        circle_marker_a2b84a93d3407b26368f4f9ea9a4ee71.bindPopup(popup_db084916e69807eb45c3775b0254da71)
+        ;
+
+        
+    
+    
+            circle_marker_a2b84a93d3407b26368f4f9ea9a4ee71.bindTooltip(
+                `<div>
+                     FARIDABAD: 11,317
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a50f929de540d77a1641f04e05279dd5 = L.circleMarker(
+                [26.9124, 75.7873],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_3c7fb7a3999c7daa210b0ab5a55d97aa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f9af1c539fd2c6ac87338a83445206a2 = $(`<div id="html_f9af1c539fd2c6ac87338a83445206a2" style="width: 100.0%; height: 100.0%;"><b>JAIPUR</b><br>Hotspot transactions: 9,915</div>`)[0];
+                popup_3c7fb7a3999c7daa210b0ab5a55d97aa.setContent(html_f9af1c539fd2c6ac87338a83445206a2);
+            
+        
+
+        circle_marker_a50f929de540d77a1641f04e05279dd5.bindPopup(popup_3c7fb7a3999c7daa210b0ab5a55d97aa)
+        ;
+
+        
+    
+    
+            circle_marker_a50f929de540d77a1641f04e05279dd5.bindTooltip(
+                `<div>
+                     JAIPUR: 9,915
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0f6a284b275fa7d0db0d0e68e7699ef8 = L.circleMarker(
+                [30.7333, 76.7794],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_7aaf07b4c1e7556f1c927c9d90edddbb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_09fb112a4d9b4b1eadfd9500eab4abd8 = $(`<div id="html_09fb112a4d9b4b1eadfd9500eab4abd8" style="width: 100.0%; height: 100.0%;"><b>CHANDIGARH</b><br>Hotspot transactions: 9,522</div>`)[0];
+                popup_7aaf07b4c1e7556f1c927c9d90edddbb.setContent(html_09fb112a4d9b4b1eadfd9500eab4abd8);
+            
+        
+
+        circle_marker_0f6a284b275fa7d0db0d0e68e7699ef8.bindPopup(popup_7aaf07b4c1e7556f1c927c9d90edddbb)
+        ;
+
+        
+    
+    
+            circle_marker_0f6a284b275fa7d0db0d0e68e7699ef8.bindTooltip(
+                `<div>
+                     CHANDIGARH: 9,522
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1f3acb1790f4c13200334b615778be19 = L.circleMarker(
+                [26.8467, 80.9462],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_219ba916a6993eb8108c9f9dc6c70c6c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_34683db7b7c91aea6ebb9c443a98ca0f = $(`<div id="html_34683db7b7c91aea6ebb9c443a98ca0f" style="width: 100.0%; height: 100.0%;"><b>LUCKNOW</b><br>Hotspot transactions: 7,758</div>`)[0];
+                popup_219ba916a6993eb8108c9f9dc6c70c6c.setContent(html_34683db7b7c91aea6ebb9c443a98ca0f);
+            
+        
+
+        circle_marker_1f3acb1790f4c13200334b615778be19.bindPopup(popup_219ba916a6993eb8108c9f9dc6c70c6c)
+        ;
+
+        
+    
+    
+            circle_marker_1f3acb1790f4c13200334b615778be19.bindTooltip(
+                `<div>
+                     LUCKNOW: 7,758
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0e599c67cf9423640dfcd98d4ddb557e = L.circleMarker(
+                [30.7046, 76.7179],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_9ed5e15b2f9136154a45e489db7683fd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c8be76042a9d72599f9b3ad0fb7b637b = $(`<div id="html_c8be76042a9d72599f9b3ad0fb7b637b" style="width: 100.0%; height: 100.0%;"><b>MOHALI</b><br>Hotspot transactions: 6,736</div>`)[0];
+                popup_9ed5e15b2f9136154a45e489db7683fd.setContent(html_c8be76042a9d72599f9b3ad0fb7b637b);
+            
+        
+
+        circle_marker_0e599c67cf9423640dfcd98d4ddb557e.bindPopup(popup_9ed5e15b2f9136154a45e489db7683fd)
+        ;
+
+        
+    
+    
+            circle_marker_0e599c67cf9423640dfcd98d4ddb557e.bindTooltip(
+                `<div>
+                     MOHALI: 6,736
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_47e43a7ede05611270d713ae279c1cf5 = L.circleMarker(
+                [21.1702, 72.8311],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_da97d3da3a57ba729fc716202aadc1fe = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5afa01a6fc21d23e4303e21b281709f8 = $(`<div id="html_5afa01a6fc21d23e4303e21b281709f8" style="width: 100.0%; height: 100.0%;"><b>SURAT</b><br>Hotspot transactions: 5,762</div>`)[0];
+                popup_da97d3da3a57ba729fc716202aadc1fe.setContent(html_5afa01a6fc21d23e4303e21b281709f8);
+            
+        
+
+        circle_marker_47e43a7ede05611270d713ae279c1cf5.bindPopup(popup_da97d3da3a57ba729fc716202aadc1fe)
+        ;
+
+        
+    
+    
+            circle_marker_47e43a7ede05611270d713ae279c1cf5.bindTooltip(
+                `<div>
+                     SURAT: 5,762
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5803572161b883ec5289f9e0b09e1cf7 = L.circleMarker(
+                [17.6868, 83.2185],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_de160fe9450eb58f2991a5cc64ade28d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e5720d5640d8bf0d15ef69d30ea10913 = $(`<div id="html_e5720d5640d8bf0d15ef69d30ea10913" style="width: 100.0%; height: 100.0%;"><b>VISAKHAPATNAM</b><br>Hotspot transactions: 4,452</div>`)[0];
+                popup_de160fe9450eb58f2991a5cc64ade28d.setContent(html_e5720d5640d8bf0d15ef69d30ea10913);
+            
+        
+
+        circle_marker_5803572161b883ec5289f9e0b09e1cf7.bindPopup(popup_de160fe9450eb58f2991a5cc64ade28d)
+        ;
+
+        
+    
+    
+            circle_marker_5803572161b883ec5289f9e0b09e1cf7.bindTooltip(
+                `<div>
+                     VISAKHAPATNAM: 4,452
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a4980984efddedbafbe93de34313f6ee = L.circleMarker(
+                [22.7196, 75.8577],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_1a7595b66aec4c25c332f8aa3c13fada = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8d575f29868723a9b9316b503e4d492f = $(`<div id="html_8d575f29868723a9b9316b503e4d492f" style="width: 100.0%; height: 100.0%;"><b>INDORE</b><br>Hotspot transactions: 3,889</div>`)[0];
+                popup_1a7595b66aec4c25c332f8aa3c13fada.setContent(html_8d575f29868723a9b9316b503e4d492f);
+            
+        
+
+        circle_marker_a4980984efddedbafbe93de34313f6ee.bindPopup(popup_1a7595b66aec4c25c332f8aa3c13fada)
+        ;
+
+        
+    
+    
+            circle_marker_a4980984efddedbafbe93de34313f6ee.bindTooltip(
+                `<div>
+                     INDORE: 3,889
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2a2f1eba3294cd91ca55b291f8738043 = L.circleMarker(
+                [22.3072, 73.1812],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_8d7de1eba0b1479cf852d9f9596f9f26 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_27543c90db297783016329a8b2eb6315 = $(`<div id="html_27543c90db297783016329a8b2eb6315" style="width: 100.0%; height: 100.0%;"><b>VADODARA</b><br>Hotspot transactions: 3,887</div>`)[0];
+                popup_8d7de1eba0b1479cf852d9f9596f9f26.setContent(html_27543c90db297783016329a8b2eb6315);
+            
+        
+
+        circle_marker_2a2f1eba3294cd91ca55b291f8738043.bindPopup(popup_8d7de1eba0b1479cf852d9f9596f9f26)
+        ;
+
+        
+    
+    
+            circle_marker_2a2f1eba3294cd91ca55b291f8738043.bindTooltip(
+                `<div>
+                     VADODARA: 3,887
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f9051d79b89d72a7a063b21c68dba5d6 = L.circleMarker(
+                [21.1458, 79.0882],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_32e6943b055e3c5fbfc15abefdd33496 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1e67b78ec8ac65a22aeb719165991f2d = $(`<div id="html_1e67b78ec8ac65a22aeb719165991f2d" style="width: 100.0%; height: 100.0%;"><b>NAGPUR</b><br>Hotspot transactions: 3,584</div>`)[0];
+                popup_32e6943b055e3c5fbfc15abefdd33496.setContent(html_1e67b78ec8ac65a22aeb719165991f2d);
+            
+        
+
+        circle_marker_f9051d79b89d72a7a063b21c68dba5d6.bindPopup(popup_32e6943b055e3c5fbfc15abefdd33496)
+        ;
+
+        
+    
+    
+            circle_marker_f9051d79b89d72a7a063b21c68dba5d6.bindTooltip(
+                `<div>
+                     NAGPUR: 3,584
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a8c7cf22a64d3361745fcad9d71edb12 = L.circleMarker(
+                [11.0168, 76.9558],
+                {"bubblingMouseEvents": true, "color": "#b00020", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef233c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_62ffef8c50be4c199c7d6762cddf18af);
+        
+    
+        var popup_7a24c43451aa8f91c737ef615650556d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b83424e84999fca723f6c43ad0a5124 = $(`<div id="html_5b83424e84999fca723f6c43ad0a5124" style="width: 100.0%; height: 100.0%;"><b>COIMBATORE</b><br>Hotspot transactions: 3,559</div>`)[0];
+                popup_7a24c43451aa8f91c737ef615650556d.setContent(html_5b83424e84999fca723f6c43ad0a5124);
+            
+        
+
+        circle_marker_a8c7cf22a64d3361745fcad9d71edb12.bindPopup(popup_7a24c43451aa8f91c737ef615650556d)
+        ;
+
+        
+    
+    
+            circle_marker_a8c7cf22a64d3361745fcad9d71edb12.bindTooltip(
+                `<div>
+                     COIMBATORE: 3,559
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

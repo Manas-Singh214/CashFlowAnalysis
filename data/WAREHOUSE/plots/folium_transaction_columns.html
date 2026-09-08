@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_88b91f849632c73ce96e4f3c74bf86b6 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_88b91f849632c73ce96e4f3c74bf86b6" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_88b91f849632c73ce96e4f3c74bf86b6 = L.map(
+                "map_88b91f849632c73ce96e4f3c74bf86b6",
+                {
+                    center: [22.5, 78.9],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_cd50f8b474de4618a04fd70504acd15c = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_cd50f8b474de4618a04fd70504acd15c.addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var marker_3f0f1013a7d17057c6805f391fa753ba = L.marker(
+                [19.076, 72.8777],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_1121f752941a832a2850472a6e73b650 = L.divIcon({
+  "html": "\u003cdiv title=\"MUMBAI: 103,512 transactions\" style=\"width:14px;height:82px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-82px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eMUMBAI\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_3f0f1013a7d17057c6805f391fa753ba.setIcon(div_icon_1121f752941a832a2850472a6e73b650);
+            
+    
+            var marker_8ff99e290624154c1578c02a6e59c307 = L.marker(
+                [28.6139, 77.209],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_000faf173a8d60f43a2ce209df10c452 = L.divIcon({
+  "html": "\u003cdiv title=\"NEW DELHI: 84,834 transactions\" style=\"width:14px;height:70px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-70px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eNEW DELHI\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_8ff99e290624154c1578c02a6e59c307.setIcon(div_icon_000faf173a8d60f43a2ce209df10c452);
+            
+    
+            var marker_81916abb8a401ba8c2fd851cf1d4de07 = L.marker(
+                [12.9716, 77.5946],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_ee9016462803bfb36453451945627117 = L.divIcon({
+  "html": "\u003cdiv title=\"BANGALORE: 81,479 transactions\" style=\"width:14px;height:68px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-68px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eBANGALORE\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_81916abb8a401ba8c2fd851cf1d4de07.setIcon(div_icon_ee9016462803bfb36453451945627117);
+            
+    
+            var marker_8792f415b7a5751cde5f1347e34a163a = L.marker(
+                [28.4595, 77.0266],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_e3a9d52fb0840c1ec05cab4d99c4a4a9 = L.divIcon({
+  "html": "\u003cdiv title=\"GURGAON: 73,745 transactions\" style=\"width:14px;height:63px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-63px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eGURGAON\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_8792f415b7a5751cde5f1347e34a163a.setIcon(div_icon_e3a9d52fb0840c1ec05cab4d99c4a4a9);
+            
+    
+            var marker_6b2b076519068ba0eb1fc537d3e31732 = L.marker(
+                [28.7041, 77.1025],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_53c446a8903df926e1cbb07f1389d649 = L.divIcon({
+  "html": "\u003cdiv title=\"DELHI: 70,940 transactions\" style=\"width:14px;height:61px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-61px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eDELHI\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_6b2b076519068ba0eb1fc537d3e31732.setIcon(div_icon_53c446a8903df926e1cbb07f1389d649);
+            
+    
+            var marker_11a1f37f631cf62a18a3b5c99b8a920f = L.marker(
+                [28.5355, 77.391],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_02670b52b7f93a02151f63504d89a99e = L.divIcon({
+  "html": "\u003cdiv title=\"NOIDA: 32,753 transactions\" style=\"width:14px;height:38px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-38px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eNOIDA\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_11a1f37f631cf62a18a3b5c99b8a920f.setIcon(div_icon_02670b52b7f93a02151f63504d89a99e);
+            
+    
+            var marker_3a7a1ff6dc8dcacf6718f852d6a41f02 = L.marker(
+                [13.0827, 80.2707],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_2cae0c9f00b48f725a773bc3eb9d6db1 = L.divIcon({
+  "html": "\u003cdiv title=\"CHENNAI: 29,996 transactions\" style=\"width:14px;height:36px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-36px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eCHENNAI\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_3a7a1ff6dc8dcacf6718f852d6a41f02.setIcon(div_icon_2cae0c9f00b48f725a773bc3eb9d6db1);
+            
+    
+            var marker_03cdc38e4e88b52bc3985486c007e44a = L.marker(
+                [18.5204, 73.8567],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_747dd3f503b29760d6c215215651c82f = L.divIcon({
+  "html": "\u003cdiv title=\"PUNE: 25,837 transactions\" style=\"width:14px;height:33px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-33px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003ePUNE\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_03cdc38e4e88b52bc3985486c007e44a.setIcon(div_icon_747dd3f503b29760d6c215215651c82f);
+            
+    
+            var marker_49d9bd17e5d70de4408a77d1e8696b6e = L.marker(
+                [17.385, 78.4867],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_80f058cc004a90515560f23a1c1a4711 = L.divIcon({
+  "html": "\u003cdiv title=\"HYDERABAD: 23,017 transactions\" style=\"width:14px;height:32px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-32px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eHYDERABAD\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_49d9bd17e5d70de4408a77d1e8696b6e.setIcon(div_icon_80f058cc004a90515560f23a1c1a4711);
+            
+    
+            var marker_050d7e44ceab9fd3a1cc30d1d4fdb8b6 = L.marker(
+                [19.2183, 72.9781],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_519fc04fdc690b44c2083c97784f010a = L.divIcon({
+  "html": "\u003cdiv title=\"THANE: 21,496 transactions\" style=\"width:14px;height:31px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-31px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eTHANE\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_050d7e44ceab9fd3a1cc30d1d4fdb8b6.setIcon(div_icon_519fc04fdc690b44c2083c97784f010a);
+            
+    
+            var marker_989bc9b4f95e06d3979386b8db2315f5 = L.marker(
+                [22.5726, 88.3639],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_5a1fc326023d0459595e08d5ded4e5f9 = L.divIcon({
+  "html": "\u003cdiv title=\"KOLKATA: 19,963 transactions\" style=\"width:14px;height:30px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-30px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eKOLKATA\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_989bc9b4f95e06d3979386b8db2315f5.setIcon(div_icon_5a1fc326023d0459595e08d5ded4e5f9);
+            
+    
+            var marker_ffc5ae31da44053b1ebca38b57e33b1b = L.marker(
+                [28.6692, 77.4538],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_976a92bde26e3763daff599fe5db2486 = L.divIcon({
+  "html": "\u003cdiv title=\"GHAZIABAD: 15,828 transactions\" style=\"width:14px;height:27px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-27px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eGHAZIABAD\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_ffc5ae31da44053b1ebca38b57e33b1b.setIcon(div_icon_976a92bde26e3763daff599fe5db2486);
+            
+    
+            var marker_d18e4fbf56bed1e52cf9d8ae388ec8de = L.marker(
+                [19.033, 73.0297],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_f9d8b2812e8d41161caa2bd9f136825c = L.divIcon({
+  "html": "\u003cdiv title=\"NAVI MUMBAI: 13,067 transactions\" style=\"width:14px;height:26px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-26px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eNAVI MUMBAI\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_d18e4fbf56bed1e52cf9d8ae388ec8de.setIcon(div_icon_f9d8b2812e8d41161caa2bd9f136825c);
+            
+    
+            var marker_29168e3b6cc1ccd729030b8d91d70621 = L.marker(
+                [23.0225, 72.5714],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_d5c40dff62564ba7419422268f3441c4 = L.divIcon({
+  "html": "\u003cdiv title=\"AHMEDABAD: 12,259 transactions\" style=\"width:14px;height:25px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-25px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eAHMEDABAD\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_29168e3b6cc1ccd729030b8d91d70621.setIcon(div_icon_d5c40dff62564ba7419422268f3441c4);
+            
+    
+            var marker_5ad2e82f79b3afa96dd06a9e11167f8c = L.marker(
+                [28.4089, 77.3178],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_ec5051b3b0a296639acd0431484539bb = L.divIcon({
+  "html": "\u003cdiv title=\"FARIDABAD: 11,317 transactions\" style=\"width:14px;height:24px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-24px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eFARIDABAD\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_5ad2e82f79b3afa96dd06a9e11167f8c.setIcon(div_icon_ec5051b3b0a296639acd0431484539bb);
+            
+    
+            var marker_a64d2bb4de89578308e2da4c86b16aa5 = L.marker(
+                [26.9124, 75.7873],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_ec7a2e8ee9312ad9bd67795f82c0d4ab = L.divIcon({
+  "html": "\u003cdiv title=\"JAIPUR: 9,915 transactions\" style=\"width:14px;height:24px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-24px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eJAIPUR\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_a64d2bb4de89578308e2da4c86b16aa5.setIcon(div_icon_ec7a2e8ee9312ad9bd67795f82c0d4ab);
+            
+    
+            var marker_97a2dc2ebee04cb3995361c2cfcb1e39 = L.marker(
+                [30.7333, 76.7794],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_6e682bbeeaa4e42395a0615bfcb2a102 = L.divIcon({
+  "html": "\u003cdiv title=\"CHANDIGARH: 9,522 transactions\" style=\"width:14px;height:23px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-23px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eCHANDIGARH\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_97a2dc2ebee04cb3995361c2cfcb1e39.setIcon(div_icon_6e682bbeeaa4e42395a0615bfcb2a102);
+            
+    
+            var marker_bc4d6453bda85b6667666925dcffd30d = L.marker(
+                [26.8467, 80.9462],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_4b0b6c8b93e05cfb703623e044507cb7 = L.divIcon({
+  "html": "\u003cdiv title=\"LUCKNOW: 7,758 transactions\" style=\"width:14px;height:22px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-22px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eLUCKNOW\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_bc4d6453bda85b6667666925dcffd30d.setIcon(div_icon_4b0b6c8b93e05cfb703623e044507cb7);
+            
+    
+            var marker_d94f272fb10dbd2a49359fdaa78da242 = L.marker(
+                [30.7046, 76.7179],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_6badee6ddde43deae69d6bd7bce030d1 = L.divIcon({
+  "html": "\u003cdiv title=\"MOHALI: 6,736 transactions\" style=\"width:14px;height:22px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-22px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eMOHALI\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_d94f272fb10dbd2a49359fdaa78da242.setIcon(div_icon_6badee6ddde43deae69d6bd7bce030d1);
+            
+    
+            var marker_7332e95db819ccc9a8ec83ca21251aec = L.marker(
+                [21.1702, 72.8311],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_5c9d0610f53f7977b8464d37e9be00cb = L.divIcon({
+  "html": "\u003cdiv title=\"SURAT: 5,762 transactions\" style=\"width:14px;height:21px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-21px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eSURAT\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_7332e95db819ccc9a8ec83ca21251aec.setIcon(div_icon_5c9d0610f53f7977b8464d37e9be00cb);
+            
+    
+            var marker_18d5aad019bdbe0588f8a95453ad5f26 = L.marker(
+                [17.6868, 83.2185],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_74ff31144d6ae8312cb55749d5d49726 = L.divIcon({
+  "html": "\u003cdiv title=\"VISAKHAPATNAM: 4,452 transactions\" style=\"width:14px;height:20px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-20px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eVISAKHAPATNAM\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_18d5aad019bdbe0588f8a95453ad5f26.setIcon(div_icon_74ff31144d6ae8312cb55749d5d49726);
+            
+    
+            var marker_40467be7bba12b675c0a1a0729a8d2f3 = L.marker(
+                [22.7196, 75.8577],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_925c83a7c905dfc1bc93497d65a9d2d6 = L.divIcon({
+  "html": "\u003cdiv title=\"INDORE: 3,889 transactions\" style=\"width:14px;height:20px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-20px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eINDORE\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_40467be7bba12b675c0a1a0729a8d2f3.setIcon(div_icon_925c83a7c905dfc1bc93497d65a9d2d6);
+            
+    
+            var marker_db824e4ca553d08d01e9fc597e98fcee = L.marker(
+                [22.3072, 73.1812],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_2e04658e8002c212c3ffa288bab54d38 = L.divIcon({
+  "html": "\u003cdiv title=\"VADODARA: 3,887 transactions\" style=\"width:14px;height:20px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-20px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eVADODARA\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_db824e4ca553d08d01e9fc597e98fcee.setIcon(div_icon_2e04658e8002c212c3ffa288bab54d38);
+            
+    
+            var marker_9871a0a9b54489a58dc16dbaa804770b = L.marker(
+                [21.1458, 79.0882],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_c907fc60bf725983e96cd6dd80efbe1d = L.divIcon({
+  "html": "\u003cdiv title=\"NAGPUR: 3,584 transactions\" style=\"width:14px;height:20px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-20px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eNAGPUR\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_9871a0a9b54489a58dc16dbaa804770b.setIcon(div_icon_c907fc60bf725983e96cd6dd80efbe1d);
+            
+    
+            var marker_0bf24b8b907af949ca2bc8936e03691e = L.marker(
+                [11.0168, 76.9558],
+                {
+}
+            ).addTo(map_88b91f849632c73ce96e4f3c74bf86b6);
+        
+    
+            var div_icon_782a8fc414d076451ac5f71f27371c04 = L.divIcon({
+  "html": "\u003cdiv title=\"COIMBATORE: 3,559 transactions\" style=\"width:14px;height:20px;background:linear-gradient(90deg,#0077b6,#48cae4);border:1px solid #023e8a;border-radius:2px 2px 0 0;box-shadow:2px 2px 3px rgba(0,0,0,.35);transform:translate(-7px,-20px);\"\u003e\u003cspan style=\"display:block;color:#023e8a;font-size:0;height:100%;\"\u003eCOIMBATORE\u003c/span\u003e\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_0bf24b8b907af949ca2bc8936e03691e.setIcon(div_icon_782a8fc414d076451ac5f71f27371c04);
+            
+</script>
+</html>
