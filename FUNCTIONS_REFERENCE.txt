@@ -1,0 +1,539 @@
+PYTHON STANDARD LIBRARY
+
+os.path.join
+Combines folder and file names into one valid path.
+Syntax: os.path.join(folder, file_name)
+Example: os.path.join(PROJECT_ROOT, "MERGED DATASETS")
+
+os.path.exists
+Checks whether a file or folder exists.
+Syntax: os.path.exists(path)
+Example: os.path.exists("data/file.csv")
+
+os.makedirs
+Creates a folder, including missing parent folders.
+Syntax: os.makedirs(path, exist_ok=True)
+Example: os.makedirs(OUT_DIR, exist_ok=True)
+
+open
+Opens a file for reading or writing.
+Syntax: open(file_path, mode, encoding="utf-8")
+Example: open("data.json", "r", encoding="utf-8")
+
+json.load
+Reads JSON data from an opened file.
+Syntax: json.load(file_object)
+Example: json.load(notebook_file)
+
+re.match
+Checks whether text matches a pattern from its beginning.
+Syntax: re.match(pattern, text)
+Example: re.match(r"\s*#\s*(\d+)", source)
+
+re.search
+Finds a pattern anywhere in text.
+Syntax: re.search(pattern, text)
+Example: re.search(r"(^|\n)\s*##\s+", text)
+
+re.sub
+Replaces text matching a regular expression.
+Syntax: re.sub(pattern, replacement, text)
+Example: re.sub(r"\s+", " ", value)
+
+warnings.filterwarnings
+Controls which warning messages Python displays.
+Syntax: warnings.filterwarnings(action)
+Example: warnings.filterwarnings("ignore")
+
+
+PANDAS
+
+pd.read_csv
+Reads a CSV file into a DataFrame.
+Syntax: pd.read_csv(file_path)
+Example: pd.read_csv("MERGED DATASETS/merged_crime_data.csv")
+
+pd.to_datetime
+Converts text values into dates and times.
+Syntax: pd.to_datetime(values, errors="coerce")
+Example: pd.to_datetime(txn["TransactionDate"], errors="coerce")
+
+pd.to_numeric
+Converts values into numbers.
+Syntax: pd.to_numeric(values, errors="coerce")
+Example: pd.to_numeric(txn["TransactionAmount_INR"], errors="coerce")
+
+DataFrame.head
+Returns the first rows of a DataFrame.
+Syntax: dataframe.head(number)
+Example: df.head(5)
+
+DataFrame.sample
+Returns random rows from a DataFrame.
+Syntax: dataframe.sample(n=number, random_state=number)
+Example: txn.sample(n=10000, random_state=42)
+
+DataFrame.copy
+Creates an independent copy of a DataFrame.
+Syntax: dataframe.copy()
+Example: banks_clean = banks[columns].copy()
+
+DataFrame.rename
+Changes column names or index names.
+Syntax: dataframe.rename(columns={old_name: new_name})
+Example: txn.rename(columns={"TransactionAmount (INR)": "TransactionAmount_INR"})
+
+DataFrame.drop
+Removes columns, rows, or duplicates from a DataFrame.
+Syntax: dataframe.drop(columns=[column_name])
+Example: dataframe.drop(columns=["_join_key"])
+
+DataFrame.drop_duplicates
+Removes repeated rows.
+Syntax: dataframe.drop_duplicates(inplace=True)
+Example: txn.drop_duplicates(inplace=True)
+
+DataFrame.dropna
+Removes rows or columns containing missing values.
+Syntax: dataframe.dropna(subset=[column_name])
+Example: txn.dropna(subset=["TransactionID", "CustomerID"])
+
+DataFrame.fillna
+Replaces missing values with a specified value.
+Syntax: dataframe.fillna(value)
+Example: rbi["ATMs_On_Site"].fillna(0)
+
+DataFrame.astype
+Converts a column or DataFrame to a specified data type.
+Syntax: dataframe.astype(data_type)
+Example: df["Year"].astype("Int64")
+
+DataFrame.str.strip
+Removes whitespace from the beginning and end of text.
+Syntax: dataframe["column"].str.strip()
+Example: banks["Bank"].str.strip()
+
+DataFrame.str.upper
+Converts text to uppercase.
+Syntax: dataframe["column"].str.upper()
+Example: txn["CustGender"].str.upper()
+
+DataFrame.str.contains
+Checks whether text contains a pattern.
+Syntax: dataframe["column"].str.contains(pattern, na=True)
+Example: xls["State/UT"].str.contains(r"TOTAL|ALL INDIA", na=True)
+
+DataFrame.groupby
+Groups rows by one or more columns for aggregation.
+Syntax: dataframe.groupby(columns)
+Example: crime.groupby("State_UT")
+
+GroupBy.agg
+Calculates one or more summary values for grouped data.
+Syntax: grouped.agg(new_column=(column, function))
+Example: rbi.groupby("Bank_Name").agg(ATMs_Total=("ATMs_Total", "mean"))
+
+GroupBy.sum
+Calculates totals for each group.
+Syntax: dataframe.groupby(column)[value_column].sum()
+Example: crime.groupby("State_UT")["Total_Crimes_Reported"].sum()
+
+GroupBy.size
+Counts rows in each group.
+Syntax: dataframe.groupby(columns).size()
+Example: txn.groupby(["DayOfWeek", "TransactionHour"]).size()
+
+DataFrame.merge
+Joins two DataFrames using matching columns.
+Syntax: left.merge(right, on=column, how="left")
+Example: banks_clean.merge(rbi_agg, on="_join_key", how="left")
+
+DataFrame.sort_values
+Sorts rows by one or more columns.
+Syntax: dataframe.sort_values(columns)
+Example: df.sort_values(["Bank_Name", "Year"])
+
+DataFrame.reset_index
+Creates a new sequential index.
+Syntax: dataframe.reset_index(drop=True)
+Example: df.reset_index(drop=True)
+
+DataFrame.melt
+Converts wide data into long data.
+Syntax: dataframe.melt(id_vars=column, var_name=name, value_name=name)
+Example: trends.melt(id_vars="Year", var_name="Metric", value_name="Value")
+
+DataFrame.pivot
+Reshapes long data into a table.
+Syntax: dataframe.pivot(index=column, columns=column, values=column)
+Example: pivot_hw.pivot(index="DayOfWeek", columns="TransactionHour", values="Count")
+
+DataFrame.pivot_table
+Creates a summarized pivot table.
+Syntax: dataframe.pivot_table(index=column, values=column, aggfunc=function)
+Example: df.pivot_table(index="Year", values="Net_Profit_Cr", aggfunc="sum")
+
+DataFrame.nlargest
+Returns rows with the largest values.
+Syntax: dataframe.nlargest(number, column)
+Example: latest.nlargest(15, "Total_Assets_Cr")
+
+Series.value_counts
+Counts the frequency of each unique value.
+Syntax: dataframe["column"].value_counts()
+Example: txn["CustLocation"].value_counts().head(10)
+
+Series.clip
+Limits values to a minimum or maximum.
+Syntax: series.clip(upper=maximum)
+Example: txn["TransactionAmount_INR"].clip(upper=100000)
+
+Series.nlargest
+Returns the largest values in a Series.
+Syntax: series.nlargest(number)
+Example: cyber_fraud.nlargest(20)
+
+DataFrame.to_csv
+Writes a DataFrame to a CSV file.
+Syntax: dataframe.to_csv(file_path, index=False)
+Example: merged_banks.to_csv(out1, index=False)
+
+
+NUMPY
+
+np.triu
+Creates an upper triangular array or matrix.
+Syntax: np.triu(array)
+Example: mask = np.triu(np.ones_like(corr, dtype=bool))
+
+np.ones_like
+Creates an array of ones with the same shape as another array.
+Syntax: np.ones_like(array, dtype=data_type)
+Example: np.ones_like(corr, dtype=bool)
+
+np.zeros
+Creates an array filled with zeros.
+Syntax: np.zeros(size)
+Example: bottom = np.zeros(len(top10_states))
+
+
+MATPLOTLIB
+
+plt.subplots
+Creates a figure and one or more plotting axes.
+Syntax: plt.subplots(figsize=(width, height))
+Example: fig, ax = plt.subplots(figsize=(14, 6))
+
+plt.show
+Displays the current chart.
+Syntax: plt.show()
+Example: plt.show()
+
+plt.tight_layout
+Adjusts chart spacing so labels fit properly.
+Syntax: plt.tight_layout()
+Example: plt.tight_layout()
+
+Axes.bar
+Creates vertical bars.
+Syntax: ax.bar(x, height)
+Example: ax1.bar(df["Year"], df["Incidents"])
+
+Axes.barh
+Creates horizontal bars.
+Syntax: ax.barh(y, width)
+Example: ax.barh(top10_agg.index, top10_agg[crime_type])
+
+Axes.plot
+Creates a line chart.
+Syntax: ax.plot(x, y, label="name")
+Example: ax2.plot(df["Year"], df["Amount"], label="Amount")
+
+Axes.hist
+Creates a histogram showing value distribution.
+Syntax: ax.hist(values, bins=number)
+Example: ax.hist(txn["TransactionAmount_INR"], bins=100)
+
+Axes.set_title
+Sets the chart title.
+Syntax: ax.set_title(title)
+Example: ax.set_title("Transaction Amount Distribution")
+
+Axes.set_xlabel
+Sets the horizontal axis label.
+Syntax: ax.set_xlabel(label)
+Example: ax.set_xlabel("Transaction Amount")
+
+Axes.set_ylabel
+Sets the vertical axis label.
+Syntax: ax.set_ylabel(label)
+Example: ax.set_ylabel("Number of Transactions")
+
+Axes.legend
+Displays labels for plotted data series.
+Syntax: ax.legend()
+Example: ax.legend()
+
+Axes.twinx
+Creates a second vertical axis sharing the same horizontal axis.
+Syntax: ax.twinx()
+Example: ax2 = ax1.twinx()
+
+matplotlib.ticker.FuncFormatter
+Formats axis numbers using a custom function.
+Syntax: mticker.FuncFormatter(function)
+Example: mticker.FuncFormatter(lambda value, position: f"{value:.1f}M")
+
+
+SEABORN
+
+sns.set_theme
+Sets the visual style and color palette for Seaborn charts.
+Syntax: sns.set_theme(style="whitegrid", palette="mako")
+Example: sns.set_theme(style="whitegrid", palette="mako")
+
+sns.barplot
+Creates a statistical bar chart.
+Syntax: sns.barplot(data=dataframe, x=x_column, y=y_column)
+Example: sns.barplot(data=top15_assets, y="Bank_Name", x="Total_Assets_Cr")
+
+sns.boxplot
+Shows the distribution and outliers of numeric values.
+Syntax: sns.boxplot(data=dataframe, x=x_column, y=y_column)
+Example: sns.boxplot(data=bank_fin, x="Bank_Type", y="Capital_Adequacy_Ratio_Pct")
+
+sns.heatmap
+Displays a matrix as a color-coded heatmap.
+Syntax: sns.heatmap(dataframe, annot=True, cmap="coolwarm")
+Example: sns.heatmap(corr, mask=mask, annot=True, cmap="coolwarm")
+
+sns.kdeplot
+Creates a smooth density distribution plot.
+Syntax: sns.kdeplot(data=dataframe, x=column, hue=group_column)
+Example: sns.kdeplot(data=sample_txn, x="TransactionAmount_INR", hue="CustGender")
+
+sns.violinplot
+Shows the distribution shape across categories.
+Syntax: sns.violinplot(data=dataframe, x=x_column, y=y_column)
+Example: sns.violinplot(data=sample_txn, x="CustGender", y="CustAccountBalance")
+
+sns.pairplot
+Creates pairwise plots for several numeric columns.
+Syntax: sns.pairplot(dataframe, corner=True)
+Example: sns.pairplot(pair_sample, corner=True, diag_kind="kde")
+
+
+PLOTLY EXPRESS
+
+px.scatter
+Creates an interactive scatter plot.
+Syntax: px.scatter(dataframe, x=x_column, y=y_column, color=group_column)
+Example: px.scatter(bank_fin, x="Deposits_Cr", y="Advances_Cr", color="Bank_Type")
+
+px.bar
+Creates an interactive bar chart.
+Syntax: px.bar(dataframe, x=x_column, y=y_column, color=group_column)
+Example: px.bar(state_crime, x="State_UT", y="Total_Crimes")
+
+px.line
+Creates an interactive line chart.
+Syntax: px.line(dataframe, x=x_column, y=y_column, color=group_column)
+Example: px.line(trends, x="Year", y="Cybersecurity_Incidents_Total")
+
+px.treemap
+Creates a hierarchical rectangle chart.
+Syntax: px.treemap(dataframe, path=[columns], values=value_column)
+Example: px.treemap(bank_fin, path=["Bank_Type", "Bank_Name"], values="Total_Assets_Cr")
+
+px.sunburst
+Creates a hierarchical circular chart.
+Syntax: px.sunburst(dataframe, path=[columns], values=value_column)
+Example: px.sunburst(bank_fin, path=["Bank_Type", "Bank_Name"], values="ATMs_Total")
+
+px.choropleth
+Creates a geographic color map.
+Syntax: px.choropleth(dataframe, geojson=geojson, locations=column, color=value_column)
+Example: px.choropleth(state_crime, geojson=INDIA_GEOJSON, locations="State_UT", color="Crime_Rate")
+
+px.imshow
+Displays an array or matrix as an image.
+Syntax: px.imshow(matrix, text_auto=True, color_continuous_scale="name")
+Example: px.imshow(correlation_matrix, text_auto=True, color_continuous_scale="RdBu_r")
+
+
+PLOTLY GRAPH OBJECTS
+
+go.Figure
+Creates an empty Plotly figure.
+Syntax: go.Figure()
+Example: fig = go.Figure()
+
+go.Scatter
+Creates a line or scatter data trace.
+Syntax: go.Scatter(x=x_values, y=y_values, mode="lines", name="name")
+Example: go.Scatterpolar(r=values, theta=metrics, fill="toself", name=bank_name)
+
+go.Bar
+Creates a bar data trace.
+Syntax: go.Bar(x=x_values, y=y_values, name="name")
+Example: go.Bar(x=monthly["TransactionMonth"], y=monthly["Volume"])
+
+Figure.add_trace
+Adds a chart trace to a Plotly figure.
+Syntax: figure.add_trace(trace)
+Example: fig.add_trace(go.Bar(x=months, y=volumes))
+
+Figure.update_layout
+Changes titles, themes, sizes, and general chart settings.
+Syntax: figure.update_layout(setting=value)
+Example: fig.update_layout(template="plotly_dark")
+
+Figure.update_yaxes
+Changes settings for the vertical axis.
+Syntax: figure.update_yaxes(setting=value)
+Example: fig.update_yaxes(title_text="Cyber Fraud Incidents")
+
+Figure.update_geos
+Changes geographic map settings.
+Syntax: figure.update_geos(setting=value)
+Example: fig.update_geos(fitbounds="locations", visible=False)
+
+Figure.show
+Displays an interactive Plotly figure.
+Syntax: figure.show()
+Example: fig.show()
+
+
+HVPLOT
+
+DataFrame.hvplot.line
+Creates an interactive line chart directly from a DataFrame.
+Syntax: dataframe.hvplot.line(x=x_column, y=y_column)
+Example: trends_melted.hvplot.line(x="Year", y="Value", by="Metric")
+
+DataFrame.hvplot.bar
+Creates an interactive bar chart directly from a DataFrame.
+Syntax: dataframe.hvplot.bar(x=x_column, y=y_column)
+Example: dataframe.hvplot.bar(x="Bank_Type", y="Deposits_Cr")
+
+DataFrame.hvplot.scatter
+Creates an interactive scatter chart directly from a DataFrame.
+Syntax: dataframe.hvplot.scatter(x=x_column, y=y_column)
+Example: scatter_sample.hvplot.scatter(x="CustAccountBalance", y="TransactionAmount_INR")
+
+DataFrame.hvplot.hist
+Creates an interactive histogram directly from a DataFrame.
+Syntax: dataframe.hvplot.hist(y=column, bins=number)
+Example: sample_txn.hvplot.hist(y="TransactionAmount_INR", bins=50)
+
+DataFrame.hvplot.box
+Creates an interactive box plot directly from a DataFrame.
+Syntax: dataframe.hvplot.box(y=value_column, by=group_column)
+Example: txn_top10.hvplot.box(y="TransactionAmount_INR", by="CustLocation")
+
+hvplot.save
+Saves an interactive HoloViews or hvPlot chart to a file.
+Syntax: hvplot.save(plot, file_path)
+Example: hvplot.save(plot, "plot.html")
+
+
+FOLIUM
+
+folium.Map
+Creates an interactive geographic map.
+Syntax: folium.Map(location=[latitude, longitude], zoom_start=number)
+Example: folium.Map(location=[22.5, 79.0], zoom_start=5)
+
+folium.CircleMarker
+Creates a circular marker on a Folium map.
+Syntax: folium.CircleMarker(location=[latitude, longitude], radius=number)
+Example: folium.CircleMarker(location=[latitude, longitude], radius=5)
+
+folium.Choropleth
+Creates a geographic choropleth map layer.
+Syntax: folium.Choropleth(geo_data=geojson, data=dataframe, columns=[key, value])
+Example: folium.Choropleth(geo_data=INDIA_GEOJSON, data=state_crime, columns=["State_UT", "Crime_Rate"])
+
+folium.Marker
+Adds a clickable marker to a Folium map.
+Syntax: folium.Marker(location=[latitude, longitude], popup=text)
+Example: folium.Marker(location=[latitude, longitude], popup="Transaction hotspot")
+
+Map.save
+Saves a Folium map as an HTML file.
+Syntax: map_object.save(file_path)
+Example: map_object.save("data/WAREHOUSE/plots/map.html")
+
+
+PYDECK
+
+pdk.Deck
+Creates an interactive PyDeck visualization.
+Syntax: pdk.Deck(layers=layers, initial_view_state=view_state)
+Example: pdk.Deck(layers=[layer], initial_view_state=view_state)
+
+pdk.Layer
+Creates a visualization layer for a PyDeck map.
+Syntax: pdk.Layer(layer_type, data=dataframe, get_position="[longitude, latitude]")
+Example: pdk.Layer("ScatterplotLayer", data=txn, get_position="[lon, lat]")
+
+pdk.ViewState
+Defines the initial center, zoom, pitch, and bearing of a PyDeck map.
+Syntax: pdk.ViewState(latitude=number, longitude=number, zoom=number)
+Example: pdk.ViewState(latitude=22.5, longitude=79.0, zoom=4)
+
+
+STREAMLIT
+
+st.set_page_config
+Sets the browser page title, icon, layout, and sidebar state.
+Syntax: st.set_page_config(page_title="title", layout="wide")
+Example: st.set_page_config(page_title="Cashflow Intelligence", layout="wide")
+
+st.markdown
+Displays Markdown or HTML content in the Streamlit app.
+Syntax: st.markdown(text, unsafe_allow_html=True)
+Example: st.markdown("# Cashflow Intelligence")
+
+st.cache_data
+Caches the result of a function that loads or processes data.
+Syntax: @st.cache_data(show_spinner=False)
+Example:
+@st.cache_data(show_spinner=False)
+def load_data():
+	return pd.read_csv("data.csv")
+
+st.plotly_chart
+Displays an interactive Plotly chart in Streamlit.
+Syntax: st.plotly_chart(figure, use_container_width=True)
+Example: st.plotly_chart(fig, use_container_width=True)
+
+st.image
+Displays an image in the Streamlit app.
+Syntax: st.image(image_data, use_container_width=True)
+Example: st.image(base64.b64decode(image), use_container_width=True)
+
+st.text
+Displays plain text in the Streamlit app.
+Syntax: st.text(text)
+Example: st.text("No output available")
+
+st.caption
+Displays small caption text.
+Syntax: st.caption(text)
+Example: st.caption("Source: merged bank financial data")
+
+st.error
+Displays an error message.
+Syntax: st.error(message)
+Example: st.error("Merged datasets are missing")
+
+st.warning
+Displays a warning message.
+Syntax: st.warning(message)
+Example: st.warning("Some values are missing")
+
+st.divider
+Displays a horizontal divider.
+Syntax: st.divider()
+Example: st.divider()
